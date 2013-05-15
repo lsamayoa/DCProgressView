@@ -14,21 +14,37 @@
 @implementation DCProgressView
 
 @synthesize tintColor,borderColor,borderWidth,fillColor,corners,rounding,progress;
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self sharedInit];
+    }
+    return self;
+}
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
     if (self) {
-        self.borderWidth = 1;
-        self.rounding = 4;
-        self.corners = UIRectCornerAllCorners;
-        self.backgroundColor = [UIColor clearColor];
-        animateProgress = -1;
-        self.tintColor = [UIColor colorWithRed:0/255.0f green:136/255.0f blue:204/255.0f alpha:1];
-        // Initialization code
+        [self sharedInit];
     }
     return self;
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+- (void)sharedInit
+{
+    self.borderWidth = 1;
+    self.rounding = 4;
+    self.corners = UIRectCornerAllCorners;
+    self.backgroundColor = [UIColor clearColor];
+    animateProgress = -1;
+    self.tintColor = [UIColor colorWithRed:0/255.0f green:136/255.0f blue:204/255.0f alpha:1];
+    // Initialization code
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 - (void)drawRect:(CGRect)rect
 {
